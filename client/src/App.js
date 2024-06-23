@@ -4,6 +4,7 @@ import Login from './components/Login/Login';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import UserDashboard from './components/UserDashboard/UserDashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Routes,Route} from "react-router-dom";
 
 
 const App = () => {
@@ -23,10 +24,9 @@ const App = () => {
 
   return (
     <div>
-      {view === 'register' && <Register navigateToLogin={navigateToLogin} />}
-      {view === 'login' && <Login navigateToDashboard={navigateToDashboard} />}
-      {view === 'adminDashboard' && <AdminDashboard />}
-      {view === 'userDashboard' && <UserDashboard />}
+      <Routes>
+      <Route element={<AdminDashboard/>}path="/AdminDashboard"></Route>
+      </Routes>
     </div>
   );
 };
