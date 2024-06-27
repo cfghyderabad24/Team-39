@@ -6,18 +6,20 @@ const Donation = require('../models/Donation');
 // @desc    Handle donation form submissions
 // @access  Public
 router.post('/', async (req, res) => {
-    const { title, Description, RollNumber} = req.body;
+    const { amount, nameOnCard, cardNumber, expirationDate, cvv } = req.body;
 
     try {
         const newDonation = new Donation({
-            title,
-            Description,
-            RollNumber
+            amount,
+            nameOnCard,
+            cardNumber,
+            expirationDate,
+            cvv
         });
 
         await newDonation.save();
 
-        res.status(201).json({ message: 'Project Uploaded successfully' });
+        res.status(201).json({ message: 'Donation received successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
